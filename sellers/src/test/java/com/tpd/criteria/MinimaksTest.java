@@ -2,9 +2,7 @@ package com.tpd.criteria;
 
 import java.util.Arrays;
 import java.util.List;
-
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class MinimaksTest {
 	
@@ -12,8 +10,8 @@ public class MinimaksTest {
 	
 	@Test
 	public void testCase_criteriumMinimaks() {
-		List<Integer> countsBuy = Arrays.asList(100, 120, 150, 200);
-		List<Integer> countsSell = Arrays.asList(100, 130, 180, 200);
+		List<Integer> countsBuy = Arrays.asList(100, 120, 150, 200, 100, 100);
+		List<Integer> countsSell = Arrays.asList(100, 130, 180, 200, 80, 50);
 		int priceBuy = 8;
 		int priceSell = 10;
 		
