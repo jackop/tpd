@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MinimaxImpl implements Criterium {
 
-	private List<FarmerScenario> setFarmerScenarios(List<Integer> countsBuy, List<Integer> countsSell) {
+	List<FarmerScenario> setFarmerScenarios(List<Integer> countsBuy, List<Integer> countsSell) {
 		List<FarmerScenario> farmerScenarios = new ArrayList<>();
 		countsBuy.forEach(cb -> {
 			countsSell.forEach(cs -> {
@@ -26,7 +26,7 @@ public class MinimaxImpl implements Criterium {
 		return farmerScenarios;
 	}
 
-	private List<Integer> getUniqueSellAmounts(List<FarmerScenario> farmerScenarios) {
+	List<Integer> getUniqueSellAmounts(List<FarmerScenario> farmerScenarios) {
 		List<Integer> uniqueSellAmounts = new ArrayList<>();
 		farmerScenarios.forEach(s -> {
 			if (!uniqueSellAmounts.contains(s.getSellAmount())) {
@@ -36,7 +36,7 @@ public class MinimaxImpl implements Criterium {
 		return uniqueSellAmounts;
 	}
 
-	private List<Integer> getUniqueBuyAmounts(List<FarmerScenario> farmerScenarios) {
+	List<Integer> getUniqueBuyAmounts(List<FarmerScenario> farmerScenarios) {
 		List<Integer> uniqueBuyAmounts = new ArrayList<>();
 		farmerScenarios.forEach(s -> {
 			if (!uniqueBuyAmounts.contains(s.getBuyAmount())) {
