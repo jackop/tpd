@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class HurwiczTest {
+public class BayesTest {
 
-Criterium minimaks = new HurwiczImpl();
+Criterium minimaks = new BayesImpl();
 	
 	@Test
 	public void testCase_criteriumWald() {

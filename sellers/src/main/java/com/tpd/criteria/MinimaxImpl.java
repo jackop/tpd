@@ -64,18 +64,18 @@ public class MinimaxImpl implements Criterium {
 		}
 		return maxScenarios;
 	}
-	
+
 	private FarmerScenario findMinMaxRelativeLoss(List<FarmerScenario> farmerScenarios) {
 		FarmerScenario minScenario = null;
-		
+
 		AtomicInteger min = new AtomicInteger(Integer.MAX_VALUE);
-		for(FarmerScenario scenario : farmerScenarios) {
-			if(scenario.getRelativeLose() <= min.get()) {
+		for (FarmerScenario scenario : farmerScenarios) {
+			if (scenario.getRelativeLose() <= min.get()) {
 				minScenario = scenario;
-				min.set(scenario.getRelativeLose()); 
+				min.set(scenario.getRelativeLose());
 			}
 		}
-		
+
 		return minScenario;
 	}
 
@@ -89,23 +89,9 @@ public class MinimaxImpl implements Criterium {
 					.filter(s -> s.getSellAmount() == uniqueSellAmount).collect(Collectors.toList()));
 		}
 
-		farmerScenarios.forEach(System.out::println);
-		System.out.println("==========");
 		List<FarmerScenario> maxDecisions = findMaxRelativeLosses(farmerScenarios);
-		maxDecisions.forEach(System.out::println);
-		System.out.println("==========");
 		FarmerScenario minMaxScenario = findMinMaxRelativeLoss(maxDecisions);
 		System.out.println(minMaxScenario);
 		System.out.println("Farmer should choose buyAmount=" + minMaxScenario.getBuyAmount());
-	}
-
-	private List<Integer> calculateIncomes(List<Integer> countsBuy, List<Integer> countsSell, int priceBuy,
-			int priceSell) {
-		List<Integer> incomeList = new ArrayList<>();
-		for (int i = 0; i < countsSell.size(); i++) {
-
-			incomeList.add(countsSell.get(i) * priceSell - countsBuy.get(i) * priceBuy);
-		}
-		return incomeList;
 	}
 }
