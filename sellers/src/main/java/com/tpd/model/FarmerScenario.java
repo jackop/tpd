@@ -18,6 +18,7 @@ public class FarmerScenario {
 
 	private int profit;
 	private int relativeLose;
+	private double weight;
 
 	public FarmerScenario(int buyAmount, int sellAmount) {
 		super();
@@ -80,6 +81,19 @@ public class FarmerScenario {
 
 	public void setRelativeLose(int relativeLose) {
 		this.relativeLose = relativeLose;
+	}
+	
+	public double getWeight() {
+		return weight;
+	}
+
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
+	
+	public double getWeightedProfit() {
+		calculateProfit();
+		return profit * weight;
 	}
 
 	@Override
