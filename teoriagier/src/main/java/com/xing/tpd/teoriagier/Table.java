@@ -12,19 +12,11 @@ public class Table {
 	private double[][] table;
 	private String[] rowHeaders = new String[0];
 	private String[] columnHeaders = new String[0];
-	private double[] maxInRow;
-	private double[] maxInColumn;
-	private double[] minInRow;
-	private double[] minInColumn;
 
 	public Table(int sizeX, int sizeY) {
 		this.sizeRows = sizeX;
 		this.sizeColumns = sizeY;
 		this.table = new double[sizeX][sizeY];
-		this.maxInRow = new double[sizeY];
-		this.minInRow = new double[sizeY];
-		this.maxInColumn = new double[sizeX];
-		this.minInColumn = new double[sizeX];
 	}
 
 	public void addRowHeader(String header) {
@@ -145,6 +137,10 @@ public class Table {
 
 		for (Integer columnNumber : columnsToRemove) {
 			newTable = newTable.removeColumn(columnNumber);
+			if(columnsToRemove.size() > 1) {
+				newTable = newTable.simplifyTable();
+			}
+			break;
 		}
 		return newTable;
 	}
@@ -161,6 +157,10 @@ public class Table {
 		});
 		for (Integer rowNumber : rowsToRemove) {
 			newTable = newTable.removeRow(rowNumber);
+			if(rowsToRemove.size() > 1) {
+				newTable = newTable.simplifyTable();
+			}
+			break;
 		}
 		return newTable;
 	}
@@ -181,5 +181,11 @@ public class Table {
 
 		System.out.print(result);
 	}
+
+	public double[][] getTable() {
+		return table;
+	}
+	
+	
 
 }
